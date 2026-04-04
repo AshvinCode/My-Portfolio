@@ -1,0 +1,98 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+*.min.js
+*.min.css
+*.map
+
+# Temporary files
+temp/
+tmp/
+*.log
+.cache
+
+# OS files
+.DS_Store
+Thumbs.db
+.Spotlight-V100
+.Trashes
+
+# Testing
+coverage/
+.nyc_output
+
+# Backups
+*.bak
+*.backup
+*-old.html
+
+# Configuration files (if using)
+.env
+.env.local
+config.local.js
+
+# IDE specific
+.vscode/settings.json
+.vscode/extensions.json
+.idea/workspace.xml
+
+# Analytics (optional)
+analytics.json
+
+# Credentials (IMPORTANT!)
+*credentials*
+*secrets*
+*key.json
+*token*
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Parcel related files
+.cache/
+dist/
+
+# Next.js build files
+.next/
+
+# Nuxt.js build files
+.nuxt/
+
+# Gatsby files
+public/
+.cache/
+
+# Misc
+*.pem
+.env.test
+
+# System files
+.AppleDouble
+.LSOverride
+._*
+.apdisk
+
+# Virtual environments
+venv/
+env/
+ENV/

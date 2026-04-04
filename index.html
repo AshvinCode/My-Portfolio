@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashvin Mori - Full-Stack .NET Developer & AI Engineer</title>
+    <meta name="description"
+        content="Full-Stack .NET Developer with 3+ years building scalable, cloud-powered applications using .NET Core, Angular, and Azure.">
+    <meta name="keywords" content="Full-Stack Developer, .NET Core, Angular, React, Azure, AI Engineer, Ahmedabad">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Loading Animation -->
+    <div class="loader-wrapper" id="loaderWrapper">
+        <div class="loader">
+            <div class="loader-text">ASHVIN</div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="./img/Ashvin-Mori.png" alt="Ashvin Logo" class="logo-img">
+                <span class="logo-text">Ashvin</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-controls">
+                <div class="color-picker-container" id="colorPickerContainer">
+                    <i class="fas fa-palette color-picker-icon" id="colorPickerIcon" title="Choose Theme Color"></i>
+                    <div class="color-palette glass-effect" id="colorPalette">
+                        <div class="color-swatch" data-theme-color="blue" style="background: #00d4ff;" title="Neon Blue"></div>
+                        <div class="color-swatch" data-theme-color="green" style="background: #10b981;" title="Emerald Green"></div>
+                        <div class="color-swatch" data-theme-color="pink" style="background: #ec4899;" title="Cyberpunk Pink"></div>
+                        <div class="color-swatch" data-theme-color="red" style="background: #ef4444;" title="Crimson Red"></div>
+                        <div class="color-swatch" data-theme-color="yellow" style="background: #f59e0b;" title="Golden Yellow"></div>
+                    </div>
+                </div>
+                <div class="theme-switch" id="themeSwitch" title="Toggle Theme">
+                    <i class="fas fa-sun"></i>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="stars"></div>
+        <div class="particles" id="particles"></div>
+
+        <div class="hero-content container">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="hello">Hi, I'm</span><br>
+                    <span class="name">Ashvin Mori</span> <span class="wave">👋</span>
+                </h1>
+                <div class="hero-subtitle">
+                    <span class="typing-text">Full-Stack .NET Developer | AI-Driven Engineer</span>
+                </div>
+                <p class="hero-description">
+                    I build scalable, cloud-powered applications using .NET Core, Angular, and Azure, enhanced with AI
+                    tools.
+                </p>
+                <div class="hero-buttons">
+                    <a href="resume/Ashvin_Mori_Resume.pdf" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-file-pdf"></i> View Resume
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Get In Touch
+                    </a>
+                </div>
+                <div class="social-links-hero">
+                    <a href="https://linkedin.com/in/ashvin-mori" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:moriashvin892001@gmail.com" class="social-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://github.com/AshvinCode" target="_blank" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="window-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="window-code">
+                        <pre><code><span class="code-keyword">public class</span> <span class="code-class">Developer</span>
+{
+    <span class="code-keyword">public string</span> Name = <span class="code-string">"Ashvin Mori"</span>;
+    <span class="code-keyword">public int</span> Experience = <span class="code-number" id="hero-exp">3</span>;
+    <span class="code-keyword">public string</span>[] Skills = {
+        <span class="code-string">"C#"</span>, <span class="code-string">".NET Core"</span>,
+        <span class="code-string">"Angular"</span>, <span class="code-string">"Azure"</span>
+    };
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tech-icons">
+            <div class="tech-icon" style="--delay: 0s">
+                <img src="https://img.icons8.com/?size=100&id=1BC75jFEBED6&format=png&color=000000" alt=".NET">
+            </div>
+            <div class="tech-icon" style="--delay: 0.1s">
+                <img src="https://img.icons8.com/color/96/000000/angularjs.png" alt="Angular">
+            </div>
+            <div class="tech-icon" style="--delay: 0.2s">
+                <img src="https://img.icons8.com/color/96/000000/react-native.png" alt="React">
+            </div>
+            <div class="tech-icon" style="--delay: 0.3s">
+                <img src="https://img.icons8.com/color/96/000000/azure-1.png" alt="Azure">
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+
+            <div class="about-content">
+                <div class="about-card glass-effect">
+                    <h3>Professional Summary</h3>
+                    <p>
+                        I'm a results-driven Full-Stack .NET Developer with <span id="exp-summary"
+                            class="dynamic-exp">3+ years</span> of hands-on experience building enterprise-grade
+                        applications.
+                        My expertise spans the entire stack: robust C# backends with .NET Core and Web APIs, dynamic
+                        frontends with Angular and React,
+                        and cloud infrastructure on Azure.
+                    </p>
+                    <p>
+                        What sets me apart is my passion for AI-assisted development. I leverage tools like ChatGPT and
+                        GitHub Copilot to accelerate development
+                        cycles without compromising code quality. I'm committed to writing clean, maintainable code and
+                        delivering high-performance solutions
+                        that scale with your business.
+                    </p>
+                </div>
+
+                <div class="about-stats">
+                    <div class="stat-card glass-effect">
+                        <div class="stat-number" id="exp-stat">3+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card glass-effect">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Projects Delivered</div>
+                    </div>
+                    <div class="stat-card glass-effect">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">Technologies</div>
+                    </div>
+                    <div class="stat-card glass-effect">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+
+            <!-- Skill Logos Marquee -->
+            <div class="skills-marquee-container glass-effect">
+                <div class="skills-marquee">
+                    <div class="skills-marquee-track">
+                        <!-- First Set -->
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"
+                            alt="C#" title="C#">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original-wordmark.svg"
+                            alt=".NET Core" title=".NET Core">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg"
+                            alt="Angular" title="Angular">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                            alt="React" title="React">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                            alt="JavaScript" title="JavaScript">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+                            alt="TypeScript" title="TypeScript">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                            alt="HTML5" title="HTML5">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+                            alt="CSS3" title="CSS3">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg"
+                            alt="SQL Server" title="SQL Server">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+                            alt="PostgreSQL" title="PostgreSQL">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+                            alt="MongoDB" title="MongoDB">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg"
+                            alt="Azure" title="Azure">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
+                            alt="Docker" title="Docker">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg"
+                            alt="Kubernetes" title="Kubernetes">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+                            alt="Git" title="Git">
+                        <!-- Second Set for smooth scrolling -->
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"
+                            alt="C#" title="C#">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original-wordmark.svg"
+                            alt=".NET Core" title=".NET Core">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg"
+                            alt="Angular" title="Angular">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                            alt="React" title="React">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                            alt="JavaScript" title="JavaScript">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+                            alt="TypeScript" title="TypeScript">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                            alt="HTML5" title="HTML5">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+                            alt="CSS3" title="CSS3">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg"
+                            alt="SQL Server" title="SQL Server">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+                            alt="PostgreSQL" title="PostgreSQL">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+                            alt="MongoDB" title="MongoDB">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg"
+                            alt="Azure" title="Azure">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
+                            alt="Docker" title="Docker">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg"
+                            alt="Kubernetes" title="Kubernetes">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+                            alt="Git" title="Git">
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Backend -->
+                <div class="skill-category glass-effect">
+                    <div class="skill-header">
+                        <i class="fas fa-server"></i>
+                        <h3>Backend Development</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">C#</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">.NET Core</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 93%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Web API</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">LINQ & Entity Framework</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frontend -->
+                <div class="skill-category glass-effect">
+                    <div class="skill-header">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>Frontend Development</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Angular</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">React</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript / TypeScript</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 91%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">HTML5 & CSS3</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 94%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database -->
+                <div class="skill-category glass-effect">
+                    <div class="skill-header">
+                        <i class="fas fa-database"></i>
+                        <h3>Database & Data</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">SQL Server</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 89%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">PostgreSQL</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 86%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">MongoDB</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 82%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud & DevOps -->
+                <div class="skill-category glass-effect">
+                    <div class="skill-header">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Cloud & DevOps</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Microsoft Azure</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Docker & Kubernetes</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 84%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">CI/CD Pipelines</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 87%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & AI -->
+                <div class="skill-category glass-effect">
+                    <div class="skill-header">
+                        <i class="fas fa-tools"></i>
+                        <h3>Tools & AI</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Git & GitHub</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 93%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">GitHub Copilot</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">ChatGPT & AI Tools</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="skill-category glass-effect">
+                    <div class="skill-header">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Soft Skills</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Problem Solving</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Team Collaboration</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Communication</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 91%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card glass-effect">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Advanced CRM System</h3>
+                    </div>
+                    <p class="project-description">
+                        A comprehensive Customer Relationship Management platform built with .NET Core and Angular.
+                        Features include real-time data synchronization, advanced reporting, and AI-powered customer
+                        insights.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">.NET Core</span>
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">SQL Server</span>
+                        <span class="tech-tag">Azure</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-effect">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI Chatbot Solution</h3>
+                    </div>
+                    <p class="project-description">
+                        Intelligent conversational AI chatbot integrated with OpenAI API. Features multi-language
+                        support,
+                        sentiment analysis, and context-aware responses. Deployed on Azure for scalability.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">.NET Core</span>
+                        <span class="tech-tag">OpenAI API</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Azure</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass-effect">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <h3>Construction Estimation System</h3>
+                    </div>
+                    <p class="project-description">
+                        Enterprise-grade project estimation tool for construction companies. Calculates costs,
+                        timelines,
+                        and resource allocation using ML algorithms with real-time collaboration features.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">.NET Core</span>
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card glass-effect">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>E-Commerce Platform</h3>
+                    </div>
+                    <p class="project-description">
+                        Full-stack e-commerce solution with payment gateway integration, inventory management,
+                        and analytics dashboard. Optimized for performance with 99.9% uptime on Azure.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">.NET Core</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">SQL Server</span>
+                        <span class="tech-tag">Stripe API</span>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card glass-effect">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3>Project Management Tool</h3>
+                    </div>
+                    <p class="project-description">
+                        Collaborative project management platform with Kanban boards, Gantt charts, and team
+                        communication.
+                        Real-time updates using WebSocket and SignalR.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">ASP.NET Core</span>
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">SignalR</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experience & Timeline</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-content glass-effect">
+                        <div class="timeline-date">Sept 2025 - Present</div>
+                        <h3>Senior Full-Stack Developer</h3>
+                        <p class="company-name">Droisys India Pvt Ltd</p>
+                        <ul class="achievements">
+                            <li>Leading development of enterprise applications serving 100K+ users</li>
+                            <li>Architected cloud-native solutions using .NET Core and Azure Kubernetes Service</li>
+                            <li>Mentoring junior developers and establishing best practices</li>
+                            <li>Reduced API response time by 40% through optimization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-content glass-effect">
+                        <div class="timeline-date">Jan 2024 - Sept 2025</div>
+                        <h3>Software Developer</h3>
+                        <p class="company-name">Binary Republik</p>
+                        <ul class="achievements">
+                            <li>Developed and deployed 12+ production applications</li>
+                            <li>Built RESTful APIs handling 500K+ daily requests</li>
+                            <li>Implemented CI/CD pipelines reducing deployment time by 60%</li>
+                            <li>Collaborated with cross-functional teams in Agile environment</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-content glass-effect">
+                        <div class="timeline-date">Jan 2023 - Jan 2024</div>
+                        <h3>Junior Developer</h3>
+                        <p class="company-name">Binary Republik</p>
+                        <ul class="achievements">
+                            <li>Developed full-stack features using .NET and Angular</li>
+                            <li>Fixed and optimized legacy code</li>
+                            <li>Learned and applied best practices in code quality</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Download Section -->
+    <section class="resume-section">
+        <div class="container">
+            <div class="resume-card glass-effect">
+                <div class="resume-content">
+                    <div class="resume-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="resume-text">
+                        <h2>Want to Learn More?</h2>
+                        <p>Download my detailed resume to see my complete background, certifications, and more projects.
+                        </p>
+                    </div>
+                    <a href="resume/Ashvin_Mori_Resume.pdf" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-file-pdf"></i> View Resume (PDF)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+
+            <div class="contact-wrapper">
+                <div class="contact-info glass-effect">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always interested in hearing about new projects and opportunities. Feel free to reach out!
+                    </p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <p class="label">Email</p>
+                                <a href="mailto:moriashvin892001@gmail.com">moriashvin892001@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <p class="label">Location</p>
+                                <p>Ahmedabad, Gujarat, India</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-briefcase"></i>
+                            <div>
+                                <p class="label">LinkedIn</p>
+                                <a href="https://linkedin.com/in/ashvin-mori"
+                                    target="_blank">linkedin.com/in/ashvin-mori</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-social">
+                        <a href="https://linkedin.com/in/ashvin-mori" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:moriashvin892001@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://github.com/AshvinCode" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact-form glass-effect" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required
+                            placeholder="Your message..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                    <div class="form-status" id="formStatus"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ashvin Mori</h3>
+                    <p>Full-Stack .NET Developer | AI-Driven Engineer</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Social</h3>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com/in/ashvin-mori" target="_blank">LinkedIn</a>
+                        <a href="https://github.com" target="_blank">GitHub</a>
+                        <a href="mailto:moriashvin892001@gmail.com">Email</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ashvin Mori. All rights reserved. Crafted with <span class="heart">❤</span> in Ahmedabad.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
