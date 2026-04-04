@@ -30,6 +30,11 @@ function getOrCreateSpreadsheet() {
   setupSheet(ss, 'Visits', ['Timestamp', 'URL Path', 'Host', 'User Agent']);
   setupSheet(ss, 'Clicks', ['Timestamp', 'Element Tag', 'Element Text / Info', 'User Agent']);
   
+  // Custom Portfolio Sections
+  setupSheet(ss, 'Projects', ['timestamp', 'name', 'description', 'demoLink', 'sourceLink', 'price']);
+  setupSheet(ss, 'Blogs', ['timestamp', 'title', 'content', 'category', 'date']);
+  setupSheet(ss, 'Videos', ['timestamp', 'title', 'url', 'description', 'category']);
+  
   return ss;
 }
 
@@ -79,6 +84,21 @@ function doPost(e) {
       const sheet = ss.getSheetByName('Clicks');
       sheet.appendRow([timestamp, data.elementTag, data.elementData, userAgent]);
       return createJsonResponse(true, 'Click logged');
+    }
+    else if (action === 'addProject') {
+      const sheet = ss.getSheetByName('Projects');
+      sheet.appendRow([timestamp, data.name, data.description, data.demoLink, data.sourceLink, data.price]);
+      return createJsonResponse(true, 'Project added');
+    }
+    else if (action === 'addBlog') {
+      const sheet = ss.getSheetByName('Blogs');
+      sheet.appendRow([timestamp, data.title, data.content, data.category, data.date]);
+      return createJsonResponse(true, 'Blog added');
+    }
+    else if (action === 'addVideo') {
+      const sheet = ss.getSheetByName('Videos');
+      sheet.appendRow([timestamp, data.title, data.url, data.description, data.category]);
+      return createJsonResponse(true, 'Video added');
     }
     
     return createJsonResponse(false, 'Unknown Action requested');
@@ -150,4 +170,44 @@ function escapeHtml(text) {
   return String(text).replace(/[&<>"']/g, function(m) {
     return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'}[m];
   });
+}
+
+function doGet(e) {
+  try {
+    const ss = getOrCreateSpreadsheet();
+    
+    // Fetch all current data
+    const data = {
+      projects: getSheetDataAsObjects(ss.getSheetByName('Projects')),
+      blogs: getSheetDataAsObjects(ss.getSheetByName('Blogs')),
+      videos: getSheetDataAsObjects(ss.getSheetByName('Videos'))
+    };
+    
+    return createJsonResponse(true, 'Data fetched successfully', data);
+  } catch (error) {
+    return createJsonResponse(false, 'Server Error: ' + error.message);
+  }
+}
+
+function getSheetDataAsObjects(sheet) {
+  if (!sheet) return [];
+  const range = sheet.getDataRange();
+  const values = range.getValues();
+  if (values.length <= 1) return []; // Only headers or exactly empty
+  
+  const headers = values[0];
+  const rowsObjects = [];
+  
+  for (let i = 1; i < values.length; i++) {
+    const row = values[i];
+    const obj = {};
+    for (let j = 0; j < headers.length; j++) {
+      let key = headers[j];
+      // Convert to strict camelCase
+      key = key.charAt(0).toLowerCase() + key.slice(1).replace(/\s([a-z])/ig, function(g) { return g[1].toUpperCase(); });
+      obj[key] = row[j];
+    }
+    rowsObjects.push(obj);
+  }
+  return rowsObjects;
 }
