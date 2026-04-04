@@ -1442,15 +1442,41 @@ section::before {
 
     .hero-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2.5rem;
+        text-align: center;
+    }
+
+    .hero-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .hero-title {
         font-size: 2.5rem;
     }
 
+    .hero-subtitle {
+        font-size: 1.2rem;
+        height: auto;
+    }
+
+    .typing-text {
+        white-space: normal;
+        border-right: none;
+        animation: none;
+        width: auto;
+    }
+
+    .social-links-hero {
+        justify-content: center;
+    }
+
     .hero-visual {
-        display: none;
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 400px;
     }
 
     .tech-icons {
@@ -1459,6 +1485,8 @@ section::before {
         right: auto;
         justify-content: center;
         margin-top: 2rem;
+        flex-wrap: wrap;
+        gap: 1.2rem;
     }
 
     .section-title {
