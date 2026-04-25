@@ -1,13 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashvin Mori - Full-Stack .NET Developer & AI Engineer</title>
     <meta name="description"
-        content="Full-Stack .NET Developer with 3+ years building scalable, cloud-powered applications using .NET Core, Angular, and Azure.">
+        content="Full-Stack .NET Developer with 3.5+ years building scalable, cloud-powered applications using .NET Core, Angular, and Azure.">
     <meta name="keywords" content="Full-Stack Developer, .NET Core, Angular, React, Azure, AI Engineer, Ahmedabad">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--primary-color)',
+                        accent: 'var(--accent-color)',
+                        bgDark: 'var(--bg-dark)',
+                        bgDarker: 'var(--bg-darker)',
+                        bgCard: 'var(--bg-card)',
+                        textPrimary: 'var(--text-primary)',
+                        textSecondary: 'var(--text-secondary)',
+                        borderColor: 'var(--border-color)',
+                    },
+                    fontFamily: {
+                        sans: ['Sora', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link
@@ -15,659 +51,873 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body
+    class="bg-bgDarker text-textPrimary font-sans overflow-x-hidden antialiased selection:bg-primary selection:text-bgDarker">
     <!-- Custom Cursor -->
     <div class="cursor-outline" id="cursorOutline"></div>
 
     <!-- Loading Animation -->
-    <div class="loader-wrapper" id="loaderWrapper">
-        <div class="loader">
-            <div class="loader-text">ASHVIN</div>
+    <div class="fixed inset-0 bg-bgDarker flex items-center justify-center z-[9999] transition-all duration-700 pointer-events-none"
+        id="loaderWrapper">
+        <div
+            class="flex items-center justify-center w-32 h-32 rounded-full border-2 border-primary/20 border-t-primary animate-spin relative">
         </div>
+        <div class="absolute font-mono font-bold text-sm tracking-widest animate-pulse z-10 text-primary">ASHVIN</div>
     </div>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="./img/Ashvin-Mori.png" alt="Ashvin Logo" class="logo-img">
-                <span class="logo-text">Ashvin</span>
+    <!-- Floating Navbar -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50 transition-all duration-300" id="navbar">
+        <div id="nav-pill-container"
+            class="relative backdrop-blur-xl bg-bgCard border border-borderColor shadow-2xl rounded-full px-6 py-3 flex justify-between items-center transition-all duration-300">
+            <svg class="absolute inset-0 w-full h-full pointer-events-none overflow-visible z-10"
+                style="filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));">
+                <defs>
+                    <linearGradient id="rainbow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#ff0000" />
+                        <stop offset="25%" stop-color="#ffff00" />
+                        <stop offset="50%" stop-color="#00ff00" />
+                        <stop offset="75%" stop-color="#0000ff" />
+                        <stop offset="100%" stop-color="#8b00ff" />
+                    </linearGradient>
+                </defs>
+                <rect id="nav-border-progress" x="1.5" y="1.5" width="calc(100% - 3px)" height="calc(100% - 3px)"
+                    rx="30" fill="none" stroke="url(#rainbow-grad)" stroke-width="3" stroke-dasharray="2000"
+                    stroke-dashoffset="2000" stroke-linecap="round" class="transition-all duration-100 ease-out" />
+            </svg>
+
+            <a href="#home"
+                class="flex items-center gap-3 text-xl font-bold tracking-tight text-textPrimary hover:text-primary transition-colors">
+                <div class="w-10 h-10 rounded-full overflow-hidden border border-borderColor">
+                    <img src="./img/Ashvin-Mori.png" alt="Ashvin Logo" class="w-full h-full object-cover">
+                </div>
+                <span class="hidden sm:block">Ashvin Mori</span>
+            </a>
+
+            <div class="hidden md:flex gap-6 items-center" id="navMenu">
+                <a href="#about"
+                    class="nav-link text-sm text-textSecondary font-semibold hover:text-textPrimary transition-colors">About</a>
+                <a href="#skills"
+                    class="nav-link text-sm text-textSecondary font-semibold hover:text-textPrimary transition-colors">Skills</a>
+                <a href="#projects"
+                    class="nav-link text-sm text-textSecondary font-semibold hover:text-textPrimary transition-colors">Projects</a>
+                <a href="#experience"
+                    class="nav-link text-sm text-textSecondary font-semibold hover:text-textPrimary transition-colors">Experience</a>
+                <a href="#contact"
+                    class="nav-link text-sm text-textSecondary font-semibold hover:text-textPrimary transition-colors">Contact</a>
             </div>
-            <div class="nav-menu" id="navMenu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <div class="nav-controls">
-                <div class="color-picker-container" id="colorPickerContainer">
-                    <i class="fas fa-palette color-picker-icon" id="colorPickerIcon" title="Choose Theme Color"></i>
-                    <div class="color-palette glass-effect" id="colorPalette">
-                        <div class="color-swatch" data-theme-color="blue" style="background: #00d4ff;"
-                            title="Neon Blue"></div>
-                        <div class="color-swatch" data-theme-color="green" style="background: #10b981;"
-                            title="Emerald Green"></div>
-                        <div class="color-swatch" data-theme-color="pink" style="background: #ec4899;"
-                            title="Cyberpunk Pink"></div>
-                        <div class="color-swatch" data-theme-color="red" style="background: #ef4444;"
-                            title="Crimson Red"></div>
-                        <div class="color-swatch" data-theme-color="yellow" style="background: #f59e0b;"
-                            title="Golden Yellow"></div>
+
+            <div class="flex items-center gap-3 relative">
+                <!-- Theme Picker -->
+                <div class="relative flex items-center group" id="themePickerContainer">
+                    <button
+                        class="w-9 h-9 rounded-full flex items-center justify-center bg-bgCard border border-borderColor text-textPrimary hover:bg-primary/20 hover:text-primary hover:border-primary/50 transition-all"
+                        id="themePickerIcon" title="Choose Website Theme">
+                        <i class="fas fa-palette text-sm"></i>
+                    </button>
+                    <!-- Theme Dropdown -->
+                    <div class="absolute top-full right-0 mt-4 p-3 bg-bgDark border border-borderColor rounded-2xl shadow-2xl flex flex-col gap-3 min-w-[180px] opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50"
+                        id="themePalette">
+                        <div class="flex items-center gap-2 cursor-pointer group/item theme-option"
+                            data-theme-name="orange-white">
+                            <div class="w-4 h-4 rounded-full border border-borderColor" style="background: #f97316;">
+                            </div>
+                            <span class="text-xs font-semibold text-textSecondary group-hover/item:text-primary">Orange
+                                / White</span>
+                        </div>
+                        <div class="flex items-center gap-2 cursor-pointer group/item theme-option"
+                            data-theme-name="blue-white">
+                            <div class="w-4 h-4 rounded-full border border-borderColor" style="background: #2563eb;">
+                            </div>
+                            <span class="text-xs font-semibold text-textSecondary group-hover/item:text-primary">Blue /
+                                White</span>
+                        </div>
+                        <div class="flex items-center gap-2 cursor-pointer group/item theme-option"
+                            data-theme-name="black-blue">
+                            <div class="w-4 h-4 rounded-full border border-borderColor" style="background: #3b82f6;">
+                            </div>
+                            <span class="text-xs font-semibold text-textSecondary group-hover/item:text-primary">Neon /
+                                Black</span>
+                        </div>
+                        <div class="flex items-center gap-2 cursor-pointer group/item theme-option"
+                            data-theme-name="emerald-night">
+                            <div class="w-4 h-4 rounded-full border border-borderColor" style="background: #10b981;">
+                            </div>
+                            <span class="text-xs font-semibold text-textSecondary group-hover/item:text-primary">Emerald
+                                Night</span>
+                        </div>
+                        <div class="flex items-center gap-2 cursor-pointer group/item theme-option"
+                            data-theme-name="cyber-pink">
+                            <div class="w-4 h-4 rounded-full border border-borderColor" style="background: #ec4899;">
+                            </div>
+                            <span class="text-xs font-semibold text-textSecondary group-hover/item:text-primary">Cyber
+                                Pink</span>
+                        </div>
                     </div>
                 </div>
-                <div class="theme-switch" id="themeSwitch" title="Toggle Theme">
-                    <i class="fas fa-sun"></i>
-                </div>
+
+
+                <!-- Hamburger (Mobile) -->
+                <button class="md:hidden flex flex-col gap-[5px] p-2 z-[60] ml-1 group" id="hamburger">
+                    <span
+                        class="w-5 h-[2px] bg-white rounded-full transition-all duration-300 group-[.active]:rotate-45 group-[.active]:translate-y-[7px]"></span>
+                    <span
+                        class="w-5 h-[2px] bg-white rounded-full transition-all duration-300 group-[.active]:opacity-0"></span>
+                    <span
+                        class="w-5 h-[2px] bg-white rounded-full transition-all duration-300 group-[.active]:-rotate-45 group-[.active]:-translate-y-[7px]"></span>
+                </button>
             </div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenu"
+            class="absolute top-full left-0 right-0 mt-4 mx-auto w-[90%] bg-bgDark/95 backdrop-blur-2xl border border-borderColor rounded-3xl p-8 flex flex-col gap-6 items-center shadow-2xl opacity-0 invisible translate-y-4 transition-all duration-300 md:hidden z-40">
+            <a href="#about"
+                class="mobile-link text-lg font-bold text-textPrimary hover:text-primary transition-colors">About</a>
+            <a href="#skills"
+                class="mobile-link text-lg font-bold text-textPrimary hover:text-primary transition-colors">Skills</a>
+            <a href="#projects"
+                class="mobile-link text-lg font-bold text-textPrimary hover:text-primary transition-colors">Projects</a>
+            <a href="#experience"
+                class="mobile-link text-lg font-bold text-textPrimary hover:text-primary transition-colors">Experience</a>
+            <a href="#contact"
+                class="mobile-link text-lg font-bold text-textPrimary hover:text-primary transition-colors">Contact</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="stars"></div>
-        <div class="particles" id="particles"></div>
+    <!-- Mobile Menu Overlay -->
+    <div class="fixed inset-0 bg-bgDarker/98 backdrop-blur-2xl z-40 transform translate-x-full transition-transform duration-500 ease-in-out md:hidden flex flex-col justify-center items-center gap-8"
+        id="navMenuMobile">
+        <a href="#home"
+            class="nav-link text-2xl text-textSecondary font-bold hover:text-primary hover:tracking-widest transition-all">Home</a>
+        <a href="#about"
+            class="nav-link text-2xl text-textSecondary font-bold hover:text-primary hover:tracking-widest transition-all">About</a>
+        <a href="#skills"
+            class="nav-link text-2xl text-textSecondary font-bold hover:text-primary hover:tracking-widest transition-all">Skills</a>
+        <a href="#projects"
+            class="nav-link text-2xl text-textSecondary font-bold hover:text-primary hover:tracking-widest transition-all">Projects</a>
+        <a href="#experience"
+            class="nav-link text-2xl text-textSecondary font-bold hover:text-primary hover:tracking-widest transition-all">Experience</a>
+        <a href="#contact"
+            class="nav-link text-2xl text-textSecondary font-bold hover:text-primary hover:tracking-widest transition-all">Contact</a>
+    </div>
 
-        <div class="hero-content container">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span class="hello">Hi, I'm</span><br>
-                    <span class="name">Ashvin Mori</span> <span class="wave">👋</span>
+    <!-- Hero Section (Bento Inspired Split) -->
+    <section id="home" class="relative min-h-screen pt-40 pb-20 flex items-center xl:px-8">
+        <div class="stars absolute inset-0 opacity-40 z-0"></div>
+        <div class="particles absolute inset-0 z-0" id="particles"></div>
+
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-10 grid lg:grid-cols-12 gap-8 items-center">
+
+            <!-- Left Main Introduction -->
+            <div class="lg:col-span-7 xl:col-span-8 flex flex-col justify-center">
+                <div
+                    class="inline-block px-4 py-1.5 rounded-full bg-bgCard border border-borderColor backdrop-blur-md mb-6 w-max">
+                    <span class="text-primary font-mono text-sm tracking-wide">AVAILABLE FOR WORK</span>
+                </div>
+
+                <h1
+                    class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] mb-6 tracking-tighter text-textPrimary">
+                    Hi, I'm <br class="hidden sm:block">
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-primary bg-[length:200%_auto] animate-[pulse-slow_3s_ease-in-out_infinite]">Ashvin
+                        Mori</span>
                 </h1>
-                <div class="hero-subtitle">
-                    <span class="typing-text">Full-Stack .NET Developer | AI-Driven Engineer</span>
-                </div>
-                <p class="hero-description">
-                    I build scalable, cloud-powered applications using .NET Core, Angular, and Azure, enhanced with AI
-                    tools.
+
+                <h2 class="text-xl sm:text-2xl text-textSecondary font-semibold mb-8 h-10 max-w-2xl">
+                    <span class="typing-text border-r-2 border-primary pr-2">Full-Stack .NET Developer | AI-Driven
+                        Engineer</span>
+                </h2>
+
+                <p class="text-lg text-textSecondary mb-10 max-w-xl leading-relaxed">
+                    I build scalable, cloud-powered applications using .NET Core, Angular, and Azure, enhanced with
+                    modern AI tools. Dedicated to delivering high-performance solutions.
                 </p>
-                <div class="hero-buttons">
-                    <a href="resume/Ashvin_Mori_Resume.pdf" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-file-pdf"></i> View Resume
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i> Get In Touch
-                    </a>
-                </div>
-                <div class="social-links-hero">
-                    <a href="https://linkedin.com/in/ashvin-mori" target="_blank" class="social-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="mailto:moriashvin892001@gmail.com" class="social-icon">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://github.com/AshvinCode" target="_blank" class="social-icon">
-                        <i class="fab fa-github"></i>
+
+                <div class="flex flex-wrap items-center gap-5">
+                    <button id="matchmaker-trigger"
+                        class="px-8 py-3.5 rounded-full font-bold text-textPrimary border-2 border-primary bg-primary/10 hover:bg-primary hover:text-bgDark hover:shadow-[0_0_30px_var(--primary-color)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-2 group">
+                        <i class="fas fa-wand-magic-sparkles animate-pulse"></i> AI Matchmaker
+                    </button>
+                    <a href="resume/Ashvin_Mori_Resume.pdf" target="_blank"
+                        class="px-8 py-3.5 rounded-full font-bold text-textPrimary border border-borderColor bg-bgCard backdrop-blur-md hover:bg-primary/10 hover:border-borderColor transition-all duration-300 flex items-center gap-2">
+                        <i class="fas fa-download"></i> View Resume
                     </a>
                 </div>
             </div>
 
-            <div class="hero-visual">
-                <div class="code-window">
-                    <div class="window-header">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
+            <!-- Right Visual Code Bento Box -->
+            <div class="lg:col-span-5 xl:col-span-4 mt-12 lg:mt-0 relative group perspective-1000">
+                <!-- Glowing backdrop -->
+                <div
+                    class="absolute inset-0 bg-primary/20 blur-[80px] rounded-full group-hover:bg-primary/30 transition-colors duration-700">
+                </div>
+
+                <div
+                    class="relative bg-bgDark/80 backdrop-blur-2xl border border-borderColor rounded-3xl overflow-hidden shadow-2xl transform transition-transform duration-500 hover:rotate-y-2 hover:-rotate-x-2">
+                    <div class="flex items-center justify-between px-5 py-4 border-b border-borderColor bg-black/20">
+                        <div class="flex gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                        </div>
+                        <div class="text-textSecondary text-xs font-mono">developer.cs</div>
                     </div>
-                    <div class="window-code">
-                        <pre><code><span class="code-keyword">public class</span> <span class="code-class">Developer</span>
+                    <div class="p-6 md:p-8 overflow-x-auto text-sm font-mono leading-loose">
+                        <pre><code><span class="text-primary">public class</span> <span class="text-textPrimary font-bold">Developer</span>
 {
-    <span class="code-keyword">public string</span> Name = <span class="code-string">"Ashvin Mori"</span>;
-    <span class="code-keyword">public int</span> Experience = <span class="code-number" id="hero-exp">3</span>;
-    <span class="code-keyword">public string</span>[] Skills = {
-        <span class="code-string">"C#"</span>, <span class="code-string">".NET Core"</span>,
-        <span class="code-string">"Angular"</span>, <span class="code-string">"Azure"</span>
-    };
+  <span class="text-primary">public string</span> Name = <span class="text-green-400">"Ashvin Mori"</span>;
+  
+  <span class="text-primary">public double</span> Experience = <span class="text-yellow-400 font-bold" id="hero-exp">3.5</span>;
+  
+  <span class="text-primary">public string</span>[] Skills = {
+    <span class="text-green-400">"C#"</span>, <span class="text-green-400">".NET Core"</span>,
+    <span class="text-green-400">"Angular"</span>, <span class="text-green-400">"Azure"</span>
+  };
 }</code></pre>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="tech-icons">
-            <div class="tech-icon" style="--delay: 0s">
-                <img src="https://img.icons8.com/?size=100&id=1BC75jFEBED6&format=png&color=000000" alt=".NET">
+                <!-- Floating Social Badges -->
+                <a href="https://github.com/AshvinCode" target="_blank"
+                    class="absolute -bottom-6 -left-6 w-16 h-16 bg-primary/10 backdrop-blur-xl border border-borderColor rounded-2xl flex items-center justify-center text-2xl text-textPrimary hover:bg-primary hover:text-black hover:scale-110 transition-all duration-300 shadow-xl">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/ashvin-mori" target="_blank"
+                    class="absolute -top-6 -right-6 w-16 h-16 bg-primary/10 backdrop-blur-xl border border-borderColor rounded-2xl flex items-center justify-center text-2xl text-textPrimary hover:bg-primary hover:text-black hover:scale-110 transition-all duration-300 shadow-xl">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
             </div>
-            <div class="tech-icon" style="--delay: 0.1s">
-                <img src="https://img.icons8.com/color/96/000000/angularjs.png" alt="Angular">
-            </div>
-            <div class="tech-icon" style="--delay: 0.2s">
-                <img src="https://img.icons8.com/color/96/000000/react-native.png" alt="React">
-            </div>
-            <div class="tech-icon" style="--delay: 0.3s">
-                <img src="https://img.icons8.com/color/96/000000/azure-1.png" alt="Azure">
-            </div>
-        </div>
 
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
+    <!-- Infinite Tech Marquee Section - RECOVERED MISSING DATA -->
+    <section class="py-8 bg-black/40 border-y border-borderColor overflow-hidden">
+        <div class="w-[200%] flex items-center animate-marquee">
+            <!-- First Set -->
+            <div class="flex items-center justify-around w-1/2 space-x-12 px-8">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original-wordmark.svg"
+                    alt=".NET Core"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg"
+                    alt="Angular"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                    alt="React"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                    alt="JavaScript"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+                    alt="TypeScript"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                    alt="HTML5"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg"
+                    alt="SQL Server"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+                    alt="PostgreSQL"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+                    alt="MongoDB"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg"
+                    alt="Azure"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
+                    alt="Docker"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg"
+                    alt="Kubernetes"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+            </div>
+            <!-- Duplicated Set for infinite effect -->
+            <div class="flex items-center justify-around w-1/2 space-x-12 px-8">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original-wordmark.svg"
+                    alt=".NET Core"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg"
+                    alt="Angular"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                    alt="React"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                    alt="JavaScript"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+                    alt="TypeScript"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                    alt="HTML5"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg"
+                    alt="SQL Server"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+                    alt="PostgreSQL"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+                    alt="MongoDB"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg"
+                    alt="Azure"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
+                    alt="Docker"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg"
+                    alt="Kubernetes"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git"
+                    class="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+            </div>
+        </div>
+    </section>
 
-            <div class="about-content">
-                <div class="about-card glass-effect">
-                    <h3>Professional Summary</h3>
-                    <p>
-                        I'm a results-driven Full-Stack .NET Developer with <span id="exp-summary"
-                            class="dynamic-exp">3+ years</span> of hands-on experience building enterprise-grade
-                        applications.
-                        My expertise spans the entire stack: robust C# backends with .NET Core and Web APIs, dynamic
-                        frontends with Angular and React,
-                        and cloud infrastructure on Azure.
-                    </p>
-                    <p>
-                        What sets me apart is my passion for AI-assisted development. I leverage tools like ChatGPT and
-                        GitHub Copilot to accelerate development
-                        cycles without compromising code quality. I'm committed to writing clean, maintainable code and
-                        delivering high-performance solutions
-                        that scale with your business.
-                    </p>
+    <!-- About & Bento Stats -->
+    <section id="about" class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-2">Discover</h2>
+            <h3 class="text-4xl md:text-5xl font-bold mb-12 text-textPrimary">About Me & Metrics</h3>
+
+            <!-- Modern Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(180px,auto)]">
+
+                <!-- Main Summary (Spans 8 cols) -->
+                <div
+                    class="md:col-span-8 row-span-2 bg-gradient-to-br from-white/5 to-white/0 border border-borderColor rounded-3xl p-8 md:p-12 backdrop-blur-xl hover:border-primary/50 transition-colors duration-500 flex flex-col justify-center relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] group-hover:bg-primary/20 transition-all duration-700 rounded-full">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            <span
+                                class="text-xs font-bold text-textSecondary uppercase tracking-widest self-center mr-2">I
+                                am a:</span>
+                            <button
+                                class="persona-btn active px-4 py-2 rounded-lg bg-primary text-bgDark text-xs font-bold transition-all"
+                                data-persona="general">Default</button>
+                            <button
+                                class="persona-btn px-4 py-2 rounded-lg bg-bgCard border border-borderColor text-textSecondary text-xs font-bold hover:border-primary/50 transition-all"
+                                data-persona="cto">CTO / Lead</button>
+                            <button
+                                class="persona-btn px-4 py-2 rounded-lg bg-bgCard border border-borderColor text-textSecondary text-xs font-bold hover:border-primary/50 transition-all"
+                                data-persona="recruiter">Recruiter</button>
+                            <button
+                                class="persona-btn px-4 py-2 rounded-lg bg-bgCard border border-borderColor text-textSecondary text-xs font-bold hover:border-primary/50 transition-all"
+                                data-persona="dev">Developer</button>
+                        </div>
+                        <i class="fas fa-quote-left text-4xl text-textPrimary/10 mb-6"></i>
+                        <div id="persona-content">
+                            <p class="text-xl md:text-2xl text-textSecondary leading-relaxed md:leading-relaxed mb-6">
+                                I'm a results-driven Full-Stack developer with <span id="exp-summary"
+                                    class="text-textPrimary font-bold inline-block border-b-2 border-primary">3.5+
+                                    years</span> of hands-on experience building enterprise-grade software. My focus
+                                combines robust C# backends, dynamic Angular/React frontends, and scalable Azure cloud
+                                architectures.
+                            </p>
+                            <p class="text-lg text-textSecondary/80">
+                                Fascinated by the intersection of Software Engineering and AI, I harness tools like
+                                ChatGPT and GitHub Copilot to accelerate shipping cycles while maintaining pristine code
+                                quality.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="about-stats">
-                    <div class="stat-card glass-effect">
-                        <div class="stat-number" id="exp-stat">3+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-card glass-effect">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Projects Delivered</div>
-                    </div>
-                    <div class="stat-card glass-effect">
-                        <div class="stat-number">8+</div>
-                        <div class="stat-label">Technologies</div>
-                    </div>
-                    <div class="stat-card glass-effect">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Client Satisfaction</div>
-                    </div>
+                <!-- Exp Stat Block (Spans 4 cols) -->
+                <div
+                    class="md:col-span-4 bg-bgDark/80 border border-borderColor rounded-3xl p-8 backdrop-blur-xl flex flex-col items-center justify-center text-center hover:-translate-y-2 transition-transform duration-300">
+                    <h4 class="text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-br from-primary to-white mb-2"
+                        id="exp-stat">3.5+</h4>
+                    <p class="text-textSecondary font-semibold uppercase tracking-widest text-sm">Years Experience</p>
+                </div>
+
+                <!-- Projects Block (Spans 4 cols) -->
+                <div
+                    class="md:col-span-4 bg-bgDark/80 border border-borderColor rounded-3xl p-8 backdrop-blur-xl flex flex-col items-center justify-center text-center hover:-translate-y-2 transition-transform duration-300">
+                    <h4 class="text-5xl lg:text-6xl font-black text-textPrimary mb-2">15+</h4>
+                    <p class="text-textSecondary font-semibold uppercase tracking-widest text-sm">Projects Delivered</p>
+                </div>
+
+                <!-- Tech Block (Spans 4 cols) -->
+                <div
+                    class="md:col-span-4 lg:col-span-4 bg-bgDark/80 border border-borderColor rounded-3xl p-8 backdrop-blur-xl flex flex-col items-center justify-center text-center hover:-translate-y-2 transition-transform duration-300">
+                    <h4 class="text-5xl lg:text-6xl font-black text-textPrimary mb-2">100%</h4>
+                    <p class="text-textSecondary font-semibold uppercase tracking-widest text-sm">Client Satisfaction
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
+    <!-- Detailed Skills Section - RECOVERED MISSING DATA -->
+    <section id="skills" class="py-32 relative bg-white/[0.02] border-t border-borderColor">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-2">Expertise</h2>
+            <h3 class="text-4xl md:text-5xl font-bold mb-16 text-textPrimary">Technical Arsenal</h3>
 
-            <!-- Skill Logos Marquee -->
-            <div class="skills-marquee-container glass-effect">
-                <div class="skills-marquee">
-                    <div class="skills-marquee-track">
-                        <!-- First Set -->
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"
-                            alt="C#" title="C#">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original-wordmark.svg"
-                            alt=".NET Core" title=".NET Core">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg"
-                            alt="Angular" title="Angular">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
-                            alt="React" title="React">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                            alt="JavaScript" title="JavaScript">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
-                            alt="TypeScript" title="TypeScript">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                            alt="HTML5" title="HTML5">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
-                            alt="CSS3" title="CSS3">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg"
-                            alt="SQL Server" title="SQL Server">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
-                            alt="PostgreSQL" title="PostgreSQL">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
-                            alt="MongoDB" title="MongoDB">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg"
-                            alt="Azure" title="Azure">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
-                            alt="Docker" title="Docker">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg"
-                            alt="Kubernetes" title="Kubernetes">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
-                            alt="Git" title="Git">
-                        <!-- Second Set for smooth scrolling -->
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"
-                            alt="C#" title="C#">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original-wordmark.svg"
-                            alt=".NET Core" title=".NET Core">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg"
-                            alt="Angular" title="Angular">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
-                            alt="React" title="React">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                            alt="JavaScript" title="JavaScript">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
-                            alt="TypeScript" title="TypeScript">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                            alt="HTML5" title="HTML5">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
-                            alt="CSS3" title="CSS3">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg"
-                            alt="SQL Server" title="SQL Server">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
-                            alt="PostgreSQL" title="PostgreSQL">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
-                            alt="MongoDB" title="MongoDB">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg"
-                            alt="Azure" title="Azure">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
-                            alt="Docker" title="Docker">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg"
-                            alt="Kubernetes" title="Kubernetes">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
-                            alt="Git" title="Git">
-                    </div>
-                </div>
-            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <div class="skills-grid">
-                <!-- Backend -->
-                <div class="skill-category glass-effect">
-                    <div class="skill-header">
-                        <i class="fas fa-server"></i>
-                        <h3>Backend Development</h3>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">C#</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 95%"></div>
+                <!-- Category 1 -->
+                <div
+                    class="bg-bgDarker border border-borderColor rounded-2xl p-8 hover:border-primary/50 transition-colors group">
+                    <div
+                        class="w-12 h-12 bg-bgCard rounded-xl flex items-center justify-center text-2xl text-primary mb-6 group-hover:bg-primary group-hover:text-black transition-colors">
+                        <i class="fas fa-server"></i></div>
+                    <h4 class="text-xl font-bold text-textPrimary mb-6">Backend</h4>
+                    <div class="space-y-5">
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span
+                                    class="text-textSecondary font-semibold">C#</span><span
+                                    class="text-textPrimary">95%</span></div>
+                            <div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full relative">
+                                    <div class="absolute inset-0 bg-white/30 blur-[2px]"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="skill-item">
-                            <span class="skill-name">.NET Core</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 93%"></div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span
+                                    class="text-textSecondary font-semibold">.NET Core</span><span
+                                    class="text-textPrimary">93%</span></div>
+                            <div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden truncate">
+                                <div class="h-full bg-primary rounded-full relative w-[93%]">
+                                    <div class="absolute inset-0 bg-white/30 blur-[2px]"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Web API</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 90%"></div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span
+                                    class="text-textSecondary font-semibold">Web API Frameworks</span><span
+                                    class="text-textPrimary">90%</span></div>
+                            <div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden truncate">
+                                <div class="h-full bg-primary rounded-full relative w-[90%]">
+                                    <div class="absolute inset-0 bg-white/30 blur-[2px]"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="skill-item">
-                            <span class="skill-name">LINQ & Entity Framework</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 88%"></div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span
+                                    class="text-textSecondary font-semibold">LINQ & Entity Framework</span><span
+                                    class="text-textPrimary">88%</span></div>
+                            <div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden truncate">
+                                <div class="h-full bg-primary rounded-full relative w-[88%]">
+                                    <div class="absolute inset-0 bg-white/30 blur-[2px]"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Frontend -->
-                <div class="skill-category glass-effect">
-                    <div class="skill-header">
-                        <i class="fas fa-paint-brush"></i>
-                        <h3>Frontend Development</h3>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Angular</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 92%"></div>
+                <!-- Category 2 -->
+                <div
+                    class="bg-bgDarker border border-borderColor rounded-2xl p-8 hover:border-primary/50 transition-colors group">
+                    <div
+                        class="w-12 h-12 bg-bgCard rounded-xl flex items-center justify-center text-2xl text-primary mb-6 group-hover:bg-primary group-hover:text-black transition-colors">
+                        <i class="fas fa-paint-brush"></i></div>
+                    <h4 class="text-xl font-bold text-textPrimary mb-6">Frontend</h4>
+                    <div class="space-y-5">
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span
+                                    class="text-textSecondary font-semibold">Angular</span><span
+                                    class="text-textPrimary">92%</span></div>
+                            <div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden truncate">
+                                <div class="h-full bg-primary rounded-full relative w-[92%]">
+                                    <div class="absolute inset-0 bg-white/30 blur-[2px]"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="skill-item">
-                            <span class="skill-name">React</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 85%"></div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span
+                                    class="text-textSecondary font-semibold">React</span><span
+                                    class="text-textPrimary">85%</span></div>
+                            <div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden truncate">
+                                <div class="h-full bg-primary rounded-full relative w-[85%]">
+                                    <div class="absolute inset-0 bg-white/30 blur-[2px]"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="skill-item">
-                            <span class="skill-name">JavaScript / TypeScript</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 91%"></div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span
+                                    class="text-textSecondary font-semibold">JavaScript / TypeScript</span><span
+                                    class="text-textPrimary">91%</span></div>
+                            <div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden truncate">
+                                <div class="h-full bg-primary rounded-full relative w-[91%]">
+                                    <div class="absolute inset-0 bg-white/30 blur-[2px]"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="skill-item">
-                            <span class="skill-name">HTML5 & CSS3</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 94%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Database -->
-                <div class="skill-category glass-effect">
-                    <div class="skill-header">
-                        <i class="fas fa-database"></i>
-                        <h3>Database & Data</h3>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">SQL Server</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 89%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">PostgreSQL</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 86%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">MongoDB</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 82%"></div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span
+                                    class="text-textSecondary font-semibold">HTML5 & CSS3</span><span
+                                    class="text-textPrimary">94%</span></div>
+                            <div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden truncate">
+                                <div class="h-full bg-primary rounded-full relative w-[94%]">
+                                    <div class="absolute inset-0 bg-white/30 blur-[2px]"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Cloud & DevOps -->
-                <div class="skill-category glass-effect">
-                    <div class="skill-header">
-                        <i class="fas fa-cloud"></i>
-                        <h3>Cloud & DevOps</h3>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Microsoft Azure</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 88%"></div>
+                <!-- Category 3 -->
+                <div
+                    class="bg-bgDarker border border-borderColor rounded-2xl p-8 hover:border-primary/50 transition-colors group">
+                    <div
+                        class="w-12 h-12 bg-bgCard rounded-xl flex items-center justify-center text-2xl text-primary mb-6 group-hover:bg-primary group-hover:text-black transition-colors">
+                        <i class="fas fa-database"></i></div>
+                    <h4 class="text-xl font-bold text-textPrimary mb-6">Database & Cloud</h4>
+                    <div class="space-y-5">
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span
+                                    class="text-textSecondary font-semibold">SQL Server</span><span
+                                    class="text-textPrimary">89%</span></div>
+                            <div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden truncate">
+                                <div class="h-full bg-primary rounded-full relative w-[89%]">
+                                    <div class="absolute inset-0 bg-white/30 blur-[2px]"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Docker & Kubernetes</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 84%"></div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span
+                                    class="text-textSecondary font-semibold">PostgreSQL & MongoDB</span><span
+                                    class="text-textPrimary">86%</span></div>
+                            <div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden truncate">
+                                <div class="h-full bg-primary rounded-full relative w-[86%]">
+                                    <div class="absolute inset-0 bg-white/30 blur-[2px]"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="skill-item">
-                            <span class="skill-name">CI/CD Pipelines</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 87%"></div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span
+                                    class="text-textSecondary font-semibold">Microsoft Azure</span><span
+                                    class="text-textPrimary">88%</span></div>
+                            <div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden truncate">
+                                <div class="h-full bg-primary rounded-full relative w-[88%]">
+                                    <div class="absolute inset-0 bg-white/30 blur-[2px]"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Tools & AI -->
-                <div class="skill-category glass-effect">
-                    <div class="skill-header">
-                        <i class="fas fa-tools"></i>
-                        <h3>Tools & AI</h3>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Git & GitHub</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 93%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">GitHub Copilot</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">ChatGPT & AI Tools</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 92%"></div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span
+                                    class="text-textSecondary font-semibold">Docker & CI/CD</span><span
+                                    class="text-textPrimary">87%</span></div>
+                            <div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden truncate">
+                                <div class="h-full bg-primary rounded-full relative w-[87%]">
+                                    <div class="absolute inset-0 bg-white/30 blur-[2px]"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Soft Skills -->
-                <div class="skill-category glass-effect">
-                    <div class="skill-header">
-                        <i class="fas fa-handshake"></i>
-                        <h3>Soft Skills</h3>
+                <!-- Category 4 / AI Softskills-->
+                <div
+                    class="bg-bgDarker border border-borderColor rounded-2xl p-8 hover:border-primary/50 transition-colors group lg:col-span-3">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div
+                            class="w-12 h-12 bg-bgCard rounded-xl flex items-center justify-center text-2xl text-primary group-hover:bg-primary group-hover:text-black transition-colors">
+                            <i class="fas fa-brain"></i></div>
+                        <h4 class="text-xl font-bold text-textPrimary">AI Tools & Professional Skills</h4>
                     </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Problem Solving</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 95%"></div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span
+                                    class="text-textSecondary font-semibold">GitHub Copilot</span><span
+                                    class="text-textPrimary">90%</span></div>
+                            <div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full relative w-[90%]">
+                                    <div class="absolute inset-0 bg-white/30 blur-[2px]"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Team Collaboration</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 92%"></div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span
+                                    class="text-textSecondary font-semibold">ChatGPT & AI Integrations</span><span
+                                    class="text-textPrimary">92%</span></div>
+                            <div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full relative w-[92%]">
+                                    <div class="absolute inset-0 bg-white/30 blur-[2px]"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Communication</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 91%"></div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span
+                                    class="text-textSecondary font-semibold">Problem Solving & Agile</span><span
+                                    class="text-textPrimary">95%</span></div>
+                            <div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full relative w-[95%]">
+                                    <div class="absolute inset-0 bg-white/30 blur-[2px]"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
+    <section id="projects" class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-2">Portfolio</h2>
+            <h3 class="text-4xl md:text-5xl font-bold mb-16 text-textPrimary">Featured Architecture</h3>
 
-            <div class="projects-grid">
-                <!-- Project 0 (Visitor Management) -->
-                <div class="project-card glass-effect">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-id-badge"></i>
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <!-- Large Project Card 0 -->
+                <div
+                    class="bg-gradient-to-b from-white/5 to-transparent border border-borderColor rounded-3xl overflow-hidden hover:border-primary/50 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500 group flex flex-col">
+                    <div
+                        class="h-48 bg-black/40 flex items-center justify-center border-b border-borderColor relative overflow-hidden">
+                        <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity">
                         </div>
-                        <h3>Visitor Management System</h3>
+                        <i
+                            class="fas fa-id-badge text-6xl text-textPrimary/20 group-hover:text-primary group-hover:scale-110 transition-all duration-500"></i>
                     </div>
-                    <p class="project-description">
-                        An automated secure entry system featuring QR code passes and biometric authentication.
-                        Integrates Azure Face API for liveness detection and Aadhaar OTP for robust data validation.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">.NET Core</span>
-                        <span class="tech-tag">Azure Face API</span>
-                        <span class="tech-tag">SQL Server</span>
-                        <span class="tech-tag">C#</span>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <h4 class="text-2xl font-bold text-textPrimary mb-4">Visitor Management System</h4>
+                        <p class="text-textSecondary leading-relaxed mb-8 flex-grow">An automated secure entry system
+                            featuring QR code passes and biometric authentication. Intelligently integrates Azure Face
+                            API for liveness detection and Aadhaar OTP for robust compliance validation.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-4 py-1.5 rounded-lg bg-bgCard text-xs font-bold text-textPrimary tracking-wider uppercase border border-borderColor">.NET
+                                Core</span>
+                            <span
+                                class="px-4 py-1.5 rounded-lg bg-bgCard text-xs font-bold text-textPrimary tracking-wider uppercase border border-borderColor">Azure
+                                Face API</span>
+                            <span
+                                class="px-4 py-1.5 rounded-lg bg-bgCard text-xs font-bold text-textPrimary tracking-wider uppercase border border-borderColor">SQL
+                                Server</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 1 -->
-                <div class="project-card glass-effect">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-chart-line"></i>
+                <!-- Large Project Card 1 -->
+                <div
+                    class="bg-gradient-to-b from-white/5 to-transparent border border-borderColor rounded-3xl overflow-hidden hover:border-primary/50 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500 group flex flex-col">
+                    <div
+                        class="h-48 bg-black/40 flex items-center justify-center border-b border-borderColor relative overflow-hidden">
+                        <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity">
                         </div>
-                        <h3>Advanced CRM System</h3>
+                        <i
+                            class="fas fa-chart-line text-6xl text-textPrimary/20 group-hover:text-primary group-hover:scale-110 transition-all duration-500"></i>
                     </div>
-                    <p class="project-description">
-                        A comprehensive Customer Relationship Management platform built with .NET Core and Angular.
-                        Features include real-time data synchronization, advanced reporting, and AI-powered customer
-                        insights.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">.NET Core</span>
-                        <span class="tech-tag">Angular</span>
-                        <span class="tech-tag">SQL Server</span>
-                        <span class="tech-tag">Azure</span>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <h4 class="text-2xl font-bold text-textPrimary mb-4">Advanced CRM System</h4>
+                        <p class="text-textSecondary leading-relaxed mb-8 flex-grow">A massive corporate Customer
+                            Relationship Management platform. Engineered with real-time data synchronization pipelines,
+                            advanced visual reporting, and active AI-powered customer insights generation.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-4 py-1.5 rounded-lg bg-bgCard text-xs font-bold text-textPrimary tracking-wider uppercase border border-borderColor">.NET
+                                Core</span>
+                            <span
+                                class="px-4 py-1.5 rounded-lg bg-bgCard text-xs font-bold text-textPrimary tracking-wider uppercase border border-borderColor">Angular</span>
+                            <span
+                                class="px-4 py-1.5 rounded-lg bg-bgCard text-xs font-bold text-textPrimary tracking-wider uppercase border border-borderColor">Azure</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="project-card glass-effect">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h3>AI Chatbot Solution</h3>
+                <!-- Normal Cards Row -->
+                <div class="md:col-span-2 grid md:grid-cols-3 gap-8">
+                    <!-- Project 2 -->
+                    <div
+                        class="bg-bgCard border border-borderColor rounded-2xl p-6 hover:border-primary/30 transition-colors flex flex-col">
+                        <div class="mb-4 text-primary text-2xl"><i class="fas fa-robot"></i></div>
+                        <h4 class="text-lg font-bold text-textPrimary mb-3">AI Chatbot Solution</h4>
+                        <p class="text-textSecondary text-sm mb-6 flex-grow">Conversational AI chatbot integrated with
+                            OpenAI API. Multi-language, sentiment analysis, context-aware.</p>
+                        <div class="flex flex-wrap gap-2 text-xs text-textSecondary font-semibold"><span>.NET
+                                Core</span> &bull; <span>React</span> &bull; <span>OpenAI</span></div>
                     </div>
-                    <p class="project-description">
-                        Intelligent conversational AI chatbot integrated with OpenAI API. Features multi-language
-                        support,
-                        sentiment analysis, and context-aware responses. Deployed on Azure for scalability.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">.NET Core</span>
-                        <span class="tech-tag">OpenAI API</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Azure</span>
+                    <!-- Project 3 -->
+                    <div
+                        class="bg-bgCard border border-borderColor rounded-2xl p-6 hover:border-primary/30 transition-colors flex flex-col">
+                        <div class="mb-4 text-primary text-2xl"><i class="fas fa-hammer"></i></div>
+                        <h4 class="text-lg font-bold text-textPrimary mb-3">Construction Estimator</h4>
+                        <p class="text-textSecondary text-sm mb-6 flex-grow">Resource allocation ML engine. Calculates
+                            timelines and estimates with real-time sockets.</p>
+                        <div class="flex flex-wrap gap-2 text-xs text-textSecondary font-semibold"><span>Angular</span>
+                            &bull; <span>PostgreSQL</span> &bull; <span>Docker</span></div>
                     </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card glass-effect">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-hammer"></i>
-                        </div>
-                        <h3>Construction Estimation System</h3>
-                    </div>
-                    <p class="project-description">
-                        Enterprise-grade project estimation tool for construction companies. Calculates costs,
-                        timelines,
-                        and resource allocation using ML algorithms with real-time collaboration features.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">.NET Core</span>
-                        <span class="tech-tag">Angular</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">Docker</span>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card glass-effect">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <h3>E-Commerce Platform</h3>
-                    </div>
-                    <p class="project-description">
-                        Full-stack e-commerce solution with payment gateway integration, inventory management,
-                        and analytics dashboard. Optimized for performance with 99.9% uptime on Azure.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">.NET Core</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">SQL Server</span>
-                        <span class="tech-tag">Stripe API</span>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-card glass-effect">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <h3>Project Management Tool</h3>
-                    </div>
-                    <p class="project-description">
-                        Collaborative project management platform with Kanban boards, Gantt charts, and team
-                        communication.
-                        Real-time updates using WebSocket and SignalR.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">ASP.NET Core</span>
-                        <span class="tech-tag">Angular</span>
-                        <span class="tech-tag">SignalR</span>
-                        <span class="tech-tag">MongoDB</span>
+                    <!-- Project 4 & 5 Combined idea -->
+                    <div
+                        class="bg-bgCard border border-borderColor rounded-2xl p-6 hover:border-primary/30 transition-colors flex flex-col">
+                        <div class="mb-4 text-primary text-2xl"><i class="fas fa-shopping-cart"></i></div>
+                        <h4 class="text-lg font-bold text-textPrimary mb-3">Azure E-Commerce</h4>
+                        <p class="text-textSecondary text-sm mb-6 flex-grow">Full-stack platform tracking inventory
+                            globally with 99.9% uptime. Native Stripe integrations.</p>
+                        <div class="flex flex-wrap gap-2 text-xs text-textSecondary font-semibold"><span>React</span>
+                            &bull; <span>SQL Server</span> &bull; <span>Stripe</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Experience & Timeline</h2>
+    <!-- Detailed Experience Timeline -->
+    <section id="experience" class="py-32 relative bg-bgDark/30 border-y border-borderColor">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-sm font-bold tracking-[0.2em] text-center text-primary uppercase mb-2">Journey</h2>
+            <h3 class="text-4xl md:text-5xl font-bold text-center mb-16 text-textPrimary">Experience Timeline</h3>
 
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <div class="timeline-dot"></div>
+            <div class="relative wrap overflow-hidden p-4 md:p-10 h-full">
+                <!-- Center Line -->
+                <div class="absolute h-full w-[2px] bg-white/10 left-[27px] md:left-1/2 -translate-x-1/2 z-0"></div>
+
+                <!-- Entry 1 (Right) -->
+                <div class="mb-12 flex justify-between items-center w-full flex-col md:flex-row">
+                    <div class="hidden md:block md:w-[45%]"></div>
+                    <div
+                        class="z-30 flex items-center order-1 bg-primary shadow-[0_0_20px_var(--primary-color)] w-8 h-8 rounded-full absolute left-4 md:left-1/2 -translate-x-4 border-4 border-bgDarker">
+                        <i class="fas fa-briefcase text-[10px] text-bgDarker mx-auto"></i>
                     </div>
-                    <div class="timeline-content glass-effect">
-                        <div class="timeline-date">Jan 2026 - Present</div>
-                        <h3>Senior .NET Developer</h3>
-                        <p class="company-name">Welspun Transformation Services (Welspun GCC)</p>
-                        <ul class="achievements">
-                            <li>Developed and managed a <strong>Visitor Management System</strong> with automated
-                                workflows and QR code-based passes.</li>
-                            <li>Implemented <strong>Face Recognition</strong> and <strong>Liveness Detection</strong>
-                                using Azure Face API to enhance security and prevent spoofing.</li>
-                            <li>Integrated <strong>Aadhaar-based OTP verification</strong> to securely fetch and
-                                validate visitor data and ensure compliance.</li>
-                            <li>Independently handled <strong>end-to-end project development</strong>, including
-                                designing and optimizing <strong>SQL Server databases</strong>.</li>
+                    <div
+                        class="order-1 bg-bgCard border border-borderColor rounded-3xl p-8 w-[calc(100%-60px)] md:w-[45%] ml-auto md:ml-0 hover:border-primary/50 transition-all duration-300 shadow-xl">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-bold text-textPrimary text-xl tracking-tight">Senior .NET Developer</h4>
+                            <a href="https://www.welspun.com/" target="_blank"
+                                class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-textSecondary hover:text-primary transition-all shadow-inner"
+                                title="Visit Welspun Website"><i class="fas fa-external-link-alt text-xs"></i></a>
+                        </div>
+                        <div class="flex items-center gap-2 mb-6">
+                            <span
+                                class="px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">Welspun
+                                Transformation Services</span>
+                            <span class="text-textSecondary text-[10px] font-medium opacity-60">Jan 2026 -
+                                Present</span>
+                        </div>
+                        <ul class="text-sm text-textSecondary space-y-3">
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-primary/40 mt-1"></i>
+                                <span>Developed and managed a <strong class="text-textPrimary">Visitor Management
+                                        System</strong> with automated AI workflows.</span></li>
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-primary/40 mt-1"></i>
+                                <span>Implemented <strong class="text-textPrimary">Face Recognition</strong> using Azure
+                                    Face API for biometric security.</span></li>
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-primary/40 mt-1"></i>
+                                <span>Integrated <strong class="text-textPrimary">Aadhaar OTP verification</strong> for
+                                    enterprise-level compliance and validation.</span></li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <div class="timeline-dot"></div>
+                <!-- Entry 2 (Left) -->
+                <div class="mb-12 flex justify-between items-center w-full flex-col md:flex-row-reverse">
+                    <div class="hidden md:block md:w-[45%]"></div>
+                    <div
+                        class="z-30 flex items-center order-1 bg-textSecondary w-8 h-8 rounded-full absolute left-4 md:left-1/2 -translate-x-4 border-4 border-bgDarker">
+                        <i class="fas fa-code text-[10px] text-bgDarker mx-auto"></i>
                     </div>
-                    <div class="timeline-content glass-effect">
-                        <div class="timeline-date">Sept 2025 - Dec 2025</div>
-                        <h3>Senior Full-Stack Developer</h3>
-                        <p class="company-name">Droisys India Pvt Ltd</p>
-                        <ul class="achievements">
-                            <li>Leading development of <strong>enterprise applications</strong> serving <strong>100K+
-                                    users</strong></li>
-                            <li>Architected <strong>cloud-native solutions</strong> using <strong>.NET Core</strong> and
-                                <strong>Azure Kubernetes Service</strong>
-                            </li>
-                            <li>Mentoring junior developers and establishing <strong>best practices</strong></li>
-                            <li>Reduced <strong>API response time by 40%</strong> through optimization</li>
+                    <div
+                        class="order-1 bg-bgCard border border-borderColor rounded-3xl p-8 w-[calc(100%-60px)] md:w-[45%] ml-auto md:ml-0 hover:border-primary/50 transition-all duration-300 shadow-xl">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-bold text-textPrimary text-xl tracking-tight">Sr. Full-Stack Developer</h4>
+                            <a href="https://www.droisys.com/" target="_blank"
+                                class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-textSecondary hover:text-primary transition-all shadow-inner"
+                                title="Visit Droisys Website"><i class="fas fa-external-link-alt text-xs"></i></a>
+                        </div>
+                        <div class="flex items-center gap-2 mb-6">
+                            <span
+                                class="px-3 py-1 rounded-full bg-textSecondary/10 text-textSecondary text-[10px] font-bold uppercase tracking-wider">Droisys
+                                India Pvt Ltd</span>
+                            <span class="text-textSecondary text-[10px] font-medium opacity-60">Sept 2025 - Dec
+                                2025</span>
+                        </div>
+                        <ul class="text-sm text-textSecondary space-y-3">
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-textSecondary/40 mt-1"></i>
+                                <span>Architected 100K+ user solutions via <strong class="text-textPrimary">Azure
+                                        Kubernetes Service</strong>.</span></li>
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-textSecondary/40 mt-1"></i>
+                                <span>Optimized legacy architecture, reducing API response times by <strong
+                                        class="text-textPrimary">40%</strong>.</span></li>
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-textSecondary/40 mt-1"></i>
+                                <span>Spearheaded AI integrations and mentored junior engineering clusters.</span></li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <div class="timeline-dot"></div>
+                <!-- Entry 3 (Right) -->
+                <div class="mb-12 flex justify-between items-center w-full flex-col md:flex-row">
+                    <div class="hidden md:block md:w-[45%]"></div>
+                    <div
+                        class="z-30 flex items-center order-1 bg-textSecondary w-8 h-8 rounded-full absolute left-4 md:left-1/2 -translate-x-4 border-4 border-bgDarker">
+                        <i class="fas fa-laptop-code text-[10px] text-bgDarker mx-auto"></i>
                     </div>
-                    <div class="timeline-content glass-effect">
-                        <div class="timeline-date">Jan 2024 - Sept 2025</div>
-                        <h3>Software Developer</h3>
-                        <p class="company-name">Binary Republik</p>
-                        <ul class="achievements">
-                            <li>Developed and deployed <strong>12+ production applications</strong></li>
-                            <li>Built <strong>RESTful APIs</strong> handling <strong>500K+ daily requests</strong></li>
-                            <li>Implemented <strong>CI/CD pipelines</strong> reducing deployment time by
-                                <strong>60%</strong>
+                    <div
+                        class="order-1 bg-bgCard border border-borderColor rounded-3xl p-8 w-[calc(100%-60px)] md:w-[45%] ml-auto md:ml-0 hover:border-primary/50 transition-all duration-300 shadow-xl">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-bold text-textPrimary text-xl tracking-tight">Software Developer</h4>
+                            <a href="https://www.binaryrepublik.com/" target="_blank"
+                                class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-textSecondary hover:text-primary transition-all shadow-inner"
+                                title="Visit Binary Republik Website"><i
+                                    class="fas fa-external-link-alt text-xs"></i></a>
+                        </div>
+                        <div class="flex items-center gap-2 mb-6">
+                            <span
+                                class="px-3 py-1 rounded-full bg-textSecondary/10 text-textSecondary text-[10px] font-bold uppercase tracking-wider">Binary
+                                Republik</span>
+                            <span class="text-textSecondary text-[10px] font-medium opacity-60">Jan 2024 - Sept
+                                2025</span>
+                        </div>
+                        <ul class="text-sm text-textSecondary space-y-3">
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-textSecondary/40 mt-1"></i>
+                                <span>Built high-scale REST APIs managing <strong class="text-textPrimary">500K+ daily
+                                        transactions</strong>.</span></li>
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-textSecondary/40 mt-1"></i>
+                                <span>Orchestrated a portfolio of 12+ enterprise-grade production applications.</span>
                             </li>
-                            <li>Collaborated with cross-functional teams in <strong>Agile environment</strong></li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <div class="timeline-dot"></div>
+                <!-- Entry 4 (Left) -->
+                <div class="mb-8 flex justify-between items-center w-full flex-col md:flex-row-reverse">
+                    <div class="hidden md:block md:w-[45%]"></div>
+                    <div
+                        class="z-30 flex items-center order-1 bg-textSecondary w-8 h-8 rounded-full absolute left-4 md:left-1/2 -translate-x-4 border-4 border-bgDarker">
+                        <i class="fas fa-seedling text-[10px] text-bgDarker mx-auto"></i>
                     </div>
-                    <div class="timeline-content glass-effect">
-                        <div class="timeline-date">Jan 2023 - Jan 2024</div>
-                        <h3>Junior Developer</h3>
-                        <p class="company-name">Binary Republik</p>
-                        <ul class="achievements">
-                            <li>Developed full-stack features using <strong>.NET</strong> and <strong>Angular</strong>
+                    <div
+                        class="order-1 bg-bgCard border border-borderColor rounded-3xl p-8 w-[calc(100%-60px)] md:w-[45%] ml-auto md:ml-0 hover:border-primary/50 transition-all duration-300 shadow-xl">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-bold text-textPrimary text-xl tracking-tight">Junior Developer</h4>
+                            <a href="https://www.binaryrepublik.com/" target="_blank"
+                                class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-textSecondary hover:text-primary transition-all shadow-inner"
+                                title="Visit Binary Republik Website"><i
+                                    class="fas fa-external-link-alt text-xs"></i></a>
+                        </div>
+                        <div class="flex items-center gap-2 mb-6">
+                            <span
+                                class="px-3 py-1 rounded-full bg-textSecondary/10 text-textSecondary text-[10px] font-bold uppercase tracking-wider">Binary
+                                Republik</span>
+                            <span class="text-textSecondary text-[10px] font-medium opacity-60">Jan 2023 - Jan
+                                2024</span>
+                        </div>
+                        <ul class="text-sm text-textSecondary space-y-3">
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-textSecondary/40 mt-1"></i>
+                                <span>Developed full-stack modules using <strong class="text-textPrimary">.NET Core and
+                                        Angular</strong> ecosystems.</span></li>
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-textSecondary/40 mt-1"></i>
+                                <span>Performed deep code audits and optimized business-critical legacy systems.</span>
                             </li>
-                            <li>Fixed and optimized <strong>legacy code</strong></li>
-                            <li>Learned and applied <strong>best practices</strong> in code quality</li>
                         </ul>
                     </div>
                 </div>
@@ -675,133 +925,250 @@
         </div>
     </section>
 
-    <!-- Resume Download Section -->
-    <section class="resume-section">
-        <div class="container">
-            <div class="resume-card glass-effect">
-                <div class="resume-content">
-                    <div class="resume-icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="resume-text">
-                        <h2>Want to Learn More?</h2>
-                        <p>Download my detailed resume to see my complete background, certifications, and more projects.
-                        </p>
-                    </div>
-                    <a href="resume/Ashvin_Mori_Resume.pdf" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-file-pdf"></i> View Resume (PDF)
-                    </a>
+    <!-- Resume Download Call to Action - RECOVERED MISSING DATA -->
+    <section class="py-24 relative overflow-hidden">
+        <!-- Background Gradient Decor -->
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 blur-[100px] z-0 pointer-events-none">
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <div
+                class="bg-bgDarker/50 backdrop-blur-2xl border border-borderColor rounded-[3rem] p-12 lg:p-16 text-center shadow-2xl">
+                <div
+                    class="w-20 h-20 mx-auto rounded-full bg-primary/10 border border-primary text-primary flex items-center justify-center text-3xl mb-8 shadow-[0_0_30px_rgba(0,212,255,0.2)]">
+                    <i class="fas fa-file-pdf"></i>
                 </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-textPrimary mb-6">Want to Learn More?</h2>
+                <p class="text-xl text-textSecondary mb-10 max-w-2xl mx-auto">Download my detailed technical resume to
+                    explore my complete educational background, advanced certifications, and an extended list of
+                    delivered projects.</p>
+                <a href="resume/Ashvin_Mori_Resume.pdf" target="_blank"
+                    class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full font-bold text-bgDarker bg-gradient-to-r from-primary to-accent hover:scale-105 hover:shadow-[0_0_40px_var(--primary-color)] transition-all duration-300 text-lg">
+                    <i class="fas fa-download"></i> View Resume (PDF)
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+    <!-- Contact & Footer Section -->
+    <section id="contact" class="pt-32 pb-12 relative bg-bgDark/50 border-t border-borderColor">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center mb-32">
+                <div>
+                    <h2 class="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-2">Connect</h2>
+                    <h3 class="text-5xl lg:text-6xl font-bold mb-8 text-textPrimary">Let's build something <span
+                            class="italic font-light text-primary">amazing.</span></h3>
+                    <p class="text-xl text-textSecondary mb-12">I'm currently open for new opportunities and interesting
+                        projects. My inbox is always open.</p>
 
-            <div class="contact-wrapper">
-                <div class="contact-info glass-effect">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always interested in hearing about new projects and opportunities. Feel free to reach out!
-                    </p>
-
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
+                    <div class="space-y-8">
+                        <div class="flex items-center gap-6 group">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-bgCard border border-borderColor text-primary flex items-center justify-center text-2xl group-hover:bg-primary group-hover:text-black transition-all shadow-lg">
+                                <i class="fas fa-envelope"></i></div>
                             <div>
-                                <p class="label">Email</p>
-                                <a href="mailto:moriashvin892001@gmail.com">moriashvin892001@gmail.com</a>
+                                <p class="text-sm text-textSecondary font-semibold tracking-wider uppercase mb-1">Email
+                                </p>
+                                <a href="mailto:moriashvin892001@gmail.com"
+                                    class="text-xl font-medium text-textPrimary hover:text-primary transition-colors">moriashvin892001@gmail.com</a>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
+                        <div class="flex items-center gap-6 group">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-bgCard border border-borderColor text-primary flex items-center justify-center text-2xl group-hover:bg-primary group-hover:text-black transition-all shadow-lg">
+                                <i class="fas fa-map-marker-alt"></i></div>
                             <div>
-                                <p class="label">Location</p>
-                                <p>Ahmedabad, Gujarat, India</p>
+                                <p class="text-sm text-textSecondary font-semibold tracking-wider uppercase mb-1">
+                                    Location</p>
+                                <p class="text-xl font-medium text-textPrimary">Ahmedabad, Gujarat, India</p>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-briefcase"></i>
-                            <div>
-                                <p class="label">LinkedIn</p>
-                                <a href="https://linkedin.com/in/ashvin-mori"
-                                    target="_blank">linkedin.com/in/ashvin-mori</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contact-social">
-                        <a href="https://linkedin.com/in/ashvin-mori" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="mailto:moriashvin892001@gmail.com" class="social-link">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="https://github.com/AshvinCode" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
                     </div>
                 </div>
 
-                <form class="contact-form glass-effect" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Your name">
+                <!-- Form -->
+                <form class="bg-bgDarker border border-borderColor rounded-3xl p-10 shadow-2xl relative overflow-hidden"
+                    id="contactForm">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-[80px]"></div>
+                    <div class="mb-6">
+                        <input type="text" id="name" name="name" required placeholder="Full Name"
+                            class="w-full bg-bgCard border border-borderColor rounded-xl px-5 py-4 text-textPrimary placeholder-textSecondary focus:outline-none focus:border-primary focus:bg-primary/10 transition-all font-medium">
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    <div class="mb-6">
+                        <input type="email" id="email" name="email" required placeholder="Email Address"
+                            class="w-full bg-bgCard border border-borderColor rounded-xl px-5 py-4 text-textPrimary placeholder-textSecondary focus:outline-none focus:border-primary focus:bg-primary/10 transition-all font-medium">
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
+                    <div class="mb-8">
                         <textarea id="message" name="message" rows="5" required
-                            placeholder="Your message..."></textarea>
+                            placeholder="Tell me about your project..."
+                            class="w-full bg-bgCard border border-borderColor rounded-xl px-5 py-4 text-textPrimary placeholder-textSecondary focus:outline-none focus:border-primary focus:bg-primary/10 transition-all font-medium resize-none"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="submitBtn">
-                        <i class="fas fa-paper-plane"></i> Send Message
+                    <button type="submit" id="submitBtn"
+                        class="w-full py-4 rounded-xl font-bold text-bgDark bg-primary hover:shadow-[0_0_20px_var(--primary-color)] transition-all flex items-center justify-center gap-3 text-lg">
+                        Send Message <i class="fas fa-arrow-right"></i>
                     </button>
-                    <div class="form-status" id="formStatus"></div>
+                    <div id="formStatus" class="mt-4 text-center font-semibold text-sm"></div>
                 </form>
             </div>
+
+            <!-- Footer Bottom -->
+            <div
+                class="flex flex-col md:flex-row items-center justify-between py-8 border-t border-borderColor text-sm text-textSecondary font-medium">
+                <p>&copy; 2026 Ashvin Mori. All rights reserved.</p>
+                <div class="flex items-center gap-2 mt-4 md:mt-0">
+                    <span>Crafted with</span> <i class="fas fa-heart text-red-500 animate-pulse"></i> <span>using
+                        Tailwind CSS</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Ashvin Mori</h3>
-                    <p>Full-Stack .NET Developer | AI-Driven Engineer</p>
+    <!-- AI Matchmaker Modal -->
+    <div id="matchmaker-modal"
+        class="fixed inset-0 z-[1000] hidden items-center justify-center p-6 bg-bgDarker/90 backdrop-blur-sm">
+        <div class="bg-bgDark border border-borderColor p-8 rounded-3xl max-w-lg w-full shadow-2xl transform transition-all scale-95 opacity-0 duration-300 relative overflow-hidden"
+            id="matchmaker-content">
+            <!-- Animated Background Glow -->
+            <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 blur-[60px] rounded-full"></div>
+
+            <div class="relative z-10 text-center">
+                <div
+                    class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary text-3xl mx-auto mb-6 shadow-[0_0_20px_var(--primary-color)]">
+                    <i class="fas fa-bolt-lightning"></i>
                 </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+                <h3 class="text-3xl font-bold text-textPrimary mb-2">AI Job Matchmaker</h3>
+                <p class="text-textSecondary mb-8">What are you looking for? (e.g., .NET, Azure, SQL, Angular)</p>
+
+                <div class="relative mb-6">
+                    <input type="text" id="matchmaker-input" placeholder="Enter keywords or job title..."
+                        class="w-full bg-bgCard border border-borderColor rounded-xl px-5 py-4 text-textPrimary placeholder-textSecondary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
                 </div>
-                <div class="footer-section">
-                    <h3>Social</h3>
-                    <div class="footer-social">
-                        <a href="https://linkedin.com/in/ashvin-mori" target="_blank">LinkedIn</a>
-                        <a href="https://github.com" target="_blank">GitHub</a>
-                        <a href="mailto:moriashvin892001@gmail.com">Email</a>
-                    </div>
+
+                <div class="flex gap-4">
+                    <button id="matchmaker-cancel"
+                        class="flex-1 py-4 rounded-xl font-bold text-textSecondary bg-bgCard border border-borderColor hover:bg-white/5 transition-all">Cancel</button>
+                    <button id="matchmaker-btn"
+                        class="flex-1 py-4 rounded-xl font-bold text-bgDark bg-primary hover:shadow-[0_0_20px_var(--primary-color)] transition-all flex items-center justify-center gap-2">
+                        Scan & Match <i class="fas fa-search"></i>
+                    </button>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Ashvin Mori. All rights reserved. Crafted with <span class="heart">❤</span> in Ahmedabad.
-                </p>
+
+                <div id="matchmaker-status" class="mt-4 text-primary font-mono text-xs hidden">
+                    <span class="animate-pulse">●</span> AI is analyzing your requirement...
+                </div>
             </div>
         </div>
-    </footer>
+    </div>
+
+    <!-- AI Assistant Widget -->
+    <div id="ai-widget-container" class="fixed bottom-12 right-6 z-[100] flex flex-col items-end gap-4">
+        <!-- Chat Window -->
+        <div id="ai-chat-window"
+            class="hidden w-80 sm:w-96 bg-bgDark border border-borderColor rounded-3xl shadow-2xl overflow-hidden flex-col origin-bottom-right transition-all duration-300 mb-4 h-[450px]">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-primary to-accent p-4 flex justify-between items-center text-bgDarker">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                        <i class="fas fa-robot text-sm"></i>
+                    </div>
+                    <span class="font-bold text-sm tracking-wide">Ashvin GPT (v2.0)</span>
+                </div>
+                <button id="ai-close-btn" class="hover:rotate-90 transition-transform"><i
+                        class="fas fa-times"></i></button>
+            </div>
+            <!-- Messages Area -->
+            <div id="ai-messages" class="p-5 h-80 overflow-y-auto flex flex-col gap-4 text-sm font-medium">
+                <!-- Initial Message -->
+                <div
+                    class="bg-bgCard border border-borderColor rounded-xl rounded-tl-sm p-3 text-textPrimary self-start max-w-[85%]">
+                    Hi! I'm Ashvin's AI assistant. Ask me anything about his skills, experience, or projects! 🤖
+                </div>
+            </div>
+            <!-- Input Area -->
+            <form id="ai-form" class="p-3 bg-black/20 border-t border-borderColor flex gap-2 items-center m-0">
+                <input type="text" id="ai-input" placeholder="Type a message..."
+                    class="flex-grow bg-bgCard border border-borderColor rounded-lg px-3 py-2 text-textPrimary placeholder-textSecondary focus:outline-none focus:border-primary transition-colors text-sm"
+                    autocomplete="off">
+                <button type="submit" id="ai-send-btn"
+                    class="w-9 h-9 min-w-[2.25rem] rounded-lg bg-primary text-bgDark flex items-center justify-center hover:scale-105 transition-transform"><i
+                        class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+
+        <!-- Floating Toggle Button -->
+        <button id="ai-toggle-btn"
+            class="w-16 h-16 rounded-full bg-gradient-to-r from-primary to-accent text-textPrimary flex items-center justify-center text-2xl shadow-[0_0_30px_var(--primary-color)] transition-all duration-300 relative overflow-hidden group">
+            <i class="fas fa-robot relative z-10 group-hover:scale-110 transition-transform"></i>
+            <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        </button>
+    </div>
+
+    <!-- AI Background Console Bar -->
+    <div id="ai-console-bar"
+        class="fixed bottom-0 left-0 right-0 h-8 bg-bgDarker/80 backdrop-blur-md border-t border-borderColor z-[50] flex items-center px-6 overflow-hidden select-none pointer-events-none">
+        <div class="flex items-center gap-3">
+            <div class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_var(--primary-color)]"></div>
+            <span class="text-[10px] sm:text-xs font-mono font-bold text-primary tracking-widest whitespace-nowrap">AI
+                SYSTEM CORE:</span>
+        </div>
+        <div id="ai-console-logs"
+            class="flex items-center gap-8 ml-6 text-[10px] sm:text-xs font-mono text-textSecondary overflow-hidden">
+            <!-- Logs will scroll here -->
+            <span class="log-entry whitespace-nowrap opacity-60">Initializing Neural Network...</span>
+            <span class="log-entry whitespace-nowrap opacity-60">Status: ALL SYSTEMS NOMINAL</span>
+        </div>
+    </div>
+
+    <!-- Developer Terminal Overlay -->
+    <div id="dev-terminal"
+        class="fixed inset-0 z-[1000] hidden bg-black/95 backdrop-blur-md p-4 sm:p-10 font-mono text-green-500 overflow-hidden flex-col origin-center scale-95 opacity-0 transition-all duration-300">
+        <div class="flex items-center justify-between mb-4 border-b border-green-500/30 pb-2">
+            <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                <span class="ml-4 text-xs opacity-70 italic">ashvin-mori@dev-vps:~$</span>
+            </div>
+            <button id="terminal-close" class="text-green-500 hover:text-white transition-colors cursor-pointer p-1"><i
+                    class="fas fa-times"></i></button>
+        </div>
+        <div id="terminal-output"
+            class="flex-grow overflow-y-auto mb-4 text-sm leading-relaxed scrollbar-thin scrollbar-thumb-green-900">
+            <div class="mb-4 text-green-400">
+                <pre class="leading-tight text-[10px] sm:text-xs">
+      _    ____  _   ___     _____ _   _ 
+     / \  / ___|| | | \ \   / /_ _| \ | |
+    / _ \ \___ \| |_| |\ \ / / | ||  \| |
+   / ___ \ ___) |  _  | \ V /  | || |\  |
+  /_/   \_\____/|_| |_|  \_/  |___|_| \_|
+                </pre>
+                <div class="mt-4">Welcome to <span class="bg-green-500 text-black px-1">ASHVIN-LINUX v3.0</span> -
+                    Experimental AI Interface.</div>
+                <div class="opacity-70 mt-1">Connecting to remote worker... SUCCESS.</div>
+                <div class="mt-2">Type 'help' to begin session.</div>
+            </div>
+        </div>
+        <div class="flex gap-2 items-center text-sm">
+            <span class="text-green-400 font-bold">ashvin@root:~$</span>
+            <input type="text" id="terminal-input"
+                class="bg-transparent border-none outline-none text-green-300 flex-grow p-0 m-0" autocomplete="off"
+                spellcheck="false" autofocus>
+        </div>
+    </div>
+
+    <!-- Terminal Toggle Button -->
+    <button id="terminal-trigger"
+        class="fixed bottom-32 right-6 w-12 h-12 rounded-full bg-black/60 border border-green-500/30 text-green-500 flex items-center justify-center text-xl hover:bg-green-500/20 hover:scale-110 transition-all z-[100] shadow-lg group"
+        title="Open root emulator">
+        <i class="fas fa-terminal"></i>
+        <span
+            class="absolute right-full mr-4 px-3 py-1 bg-black text-[10px] font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-green-500/20">ROOT
+            CONSOLE</span>
+    </button>
 
     <script src="script.js"></script>
+    <script src="google-apps-script.js"></script>
 </body>
 
 </html>
