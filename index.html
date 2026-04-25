@@ -16,6 +16,9 @@
 </head>
 
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-outline" id="cursorOutline"></div>
+
     <!-- Loading Animation -->
     <div class="loader-wrapper" id="loaderWrapper">
         <div class="loader">
@@ -42,11 +45,16 @@
                 <div class="color-picker-container" id="colorPickerContainer">
                     <i class="fas fa-palette color-picker-icon" id="colorPickerIcon" title="Choose Theme Color"></i>
                     <div class="color-palette glass-effect" id="colorPalette">
-                        <div class="color-swatch" data-theme-color="blue" style="background: #00d4ff;" title="Neon Blue"></div>
-                        <div class="color-swatch" data-theme-color="green" style="background: #10b981;" title="Emerald Green"></div>
-                        <div class="color-swatch" data-theme-color="pink" style="background: #ec4899;" title="Cyberpunk Pink"></div>
-                        <div class="color-swatch" data-theme-color="red" style="background: #ef4444;" title="Crimson Red"></div>
-                        <div class="color-swatch" data-theme-color="yellow" style="background: #f59e0b;" title="Golden Yellow"></div>
+                        <div class="color-swatch" data-theme-color="blue" style="background: #00d4ff;"
+                            title="Neon Blue"></div>
+                        <div class="color-swatch" data-theme-color="green" style="background: #10b981;"
+                            title="Emerald Green"></div>
+                        <div class="color-swatch" data-theme-color="pink" style="background: #ec4899;"
+                            title="Cyberpunk Pink"></div>
+                        <div class="color-swatch" data-theme-color="red" style="background: #ef4444;"
+                            title="Crimson Red"></div>
+                        <div class="color-swatch" data-theme-color="yellow" style="background: #f59e0b;"
+                            title="Golden Yellow"></div>
                     </div>
                 </div>
                 <div class="theme-switch" id="themeSwitch" title="Toggle Theme">
@@ -454,6 +462,26 @@
             <h2 class="section-title">Featured Projects</h2>
 
             <div class="projects-grid">
+                <!-- Project 0 (Visitor Management) -->
+                <div class="project-card glass-effect">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-id-badge"></i>
+                        </div>
+                        <h3>Visitor Management System</h3>
+                    </div>
+                    <p class="project-description">
+                        An automated secure entry system featuring QR code passes and biometric authentication.
+                        Integrates Azure Face API for liveness detection and Aadhaar OTP for robust data validation.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">.NET Core</span>
+                        <span class="tech-tag">Azure Face API</span>
+                        <span class="tech-tag">SQL Server</span>
+                        <span class="tech-tag">C#</span>
+                    </div>
+                </div>
+
                 <!-- Project 1 -->
                 <div class="project-card glass-effect">
                     <div class="project-header">
@@ -572,14 +600,38 @@
                         <div class="timeline-dot"></div>
                     </div>
                     <div class="timeline-content glass-effect">
-                        <div class="timeline-date">Sept 2025 - Present</div>
+                        <div class="timeline-date">Jan 2026 - Present</div>
+                        <h3>Senior .NET Developer</h3>
+                        <p class="company-name">Welspun Transformation Services (Welspun GCC)</p>
+                        <ul class="achievements">
+                            <li>Developed and managed a <strong>Visitor Management System</strong> with automated
+                                workflows and QR code-based passes.</li>
+                            <li>Implemented <strong>Face Recognition</strong> and <strong>Liveness Detection</strong>
+                                using Azure Face API to enhance security and prevent spoofing.</li>
+                            <li>Integrated <strong>Aadhaar-based OTP verification</strong> to securely fetch and
+                                validate visitor data and ensure compliance.</li>
+                            <li>Independently handled <strong>end-to-end project development</strong>, including
+                                designing and optimizing <strong>SQL Server databases</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-content glass-effect">
+                        <div class="timeline-date">Sept 2025 - Dec 2025</div>
                         <h3>Senior Full-Stack Developer</h3>
                         <p class="company-name">Droisys India Pvt Ltd</p>
                         <ul class="achievements">
-                            <li>Leading development of enterprise applications serving 100K+ users</li>
-                            <li>Architected cloud-native solutions using .NET Core and Azure Kubernetes Service</li>
-                            <li>Mentoring junior developers and establishing best practices</li>
-                            <li>Reduced API response time by 40% through optimization</li>
+                            <li>Leading development of <strong>enterprise applications</strong> serving <strong>100K+
+                                    users</strong></li>
+                            <li>Architected <strong>cloud-native solutions</strong> using <strong>.NET Core</strong> and
+                                <strong>Azure Kubernetes Service</strong>
+                            </li>
+                            <li>Mentoring junior developers and establishing <strong>best practices</strong></li>
+                            <li>Reduced <strong>API response time by 40%</strong> through optimization</li>
                         </ul>
                     </div>
                 </div>
@@ -593,10 +645,12 @@
                         <h3>Software Developer</h3>
                         <p class="company-name">Binary Republik</p>
                         <ul class="achievements">
-                            <li>Developed and deployed 12+ production applications</li>
-                            <li>Built RESTful APIs handling 500K+ daily requests</li>
-                            <li>Implemented CI/CD pipelines reducing deployment time by 60%</li>
-                            <li>Collaborated with cross-functional teams in Agile environment</li>
+                            <li>Developed and deployed <strong>12+ production applications</strong></li>
+                            <li>Built <strong>RESTful APIs</strong> handling <strong>500K+ daily requests</strong></li>
+                            <li>Implemented <strong>CI/CD pipelines</strong> reducing deployment time by
+                                <strong>60%</strong>
+                            </li>
+                            <li>Collaborated with cross-functional teams in <strong>Agile environment</strong></li>
                         </ul>
                     </div>
                 </div>
@@ -610,9 +664,10 @@
                         <h3>Junior Developer</h3>
                         <p class="company-name">Binary Republik</p>
                         <ul class="achievements">
-                            <li>Developed full-stack features using .NET and Angular</li>
-                            <li>Fixed and optimized legacy code</li>
-                            <li>Learned and applied best practices in code quality</li>
+                            <li>Developed full-stack features using <strong>.NET</strong> and <strong>Angular</strong>
+                            </li>
+                            <li>Fixed and optimized <strong>legacy code</strong></li>
+                            <li>Learned and applied <strong>best practices</strong> in code quality</li>
                         </ul>
                     </div>
                 </div>

@@ -12,6 +12,7 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzfvl818hZNGJOy
 document.addEventListener('DOMContentLoaded', function () {
     initTheme();
     initLoader();
+    initCustomCursor();
     initNavigation();
     initHeroAnimations();
     initScrollAnimations();
@@ -25,6 +26,36 @@ document.addEventListener('DOMContentLoaded', function () {
     initClickTracking();
     initColorPicker();
 });
+
+// ===== CUSTOM CURSOR =====
+function initCustomCursor() {
+    const cursorOutline = document.getElementById('cursorOutline');
+    
+    if (!cursorOutline) return;
+    
+    // Check if it's a touch device, ignore if so
+    if (window.matchMedia("(max-width: 768px)").matches) return;
+    
+    window.addEventListener('mousemove', function(e) {
+        const posX = e.clientX;
+        const posY = e.clientY;
+        
+        cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+        }, { duration: 500, fill: "forwards" });
+    });
+
+    const clickables = document.querySelectorAll('a, button, input, textarea, .nav-link, .color-swatch, .theme-switch, .social-icon, .btn');
+    clickables.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorOutline.classList.add('hover');
+        });
+        el.addEventListener('mouseleave', () => {
+            cursorOutline.classList.remove('hover');
+        });
+    });
+}
 
 // ===== LOADER ANIMATION =====
 function initLoader() {
@@ -527,7 +558,7 @@ function initColorPicker() {
 // ===== EXPERIENCE CALCULATOR =====
 function initExperienceCalculator() {
     // Started January 2023
-    const startDate = new Date('2023-01-01');
+    const startDate = new Date('2022-09-2');
     const currentDate = new Date();
 
     let years = currentDate.getFullYear() - startDate.getFullYear();
